@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SURYA X TRADES</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(
+        160deg,
+        #101827 0%,
+        #0b1220 40%,
+        #050912 100%
+      );
+      color: #f5f0e6;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 16px;
+    }
+
+    main {
+      max-width: 420px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    h1 {
+      background: linear-gradient(90deg, #f9e7b0, #e7bc61, #fff0c2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 28px;
+      font-weight: 700;
+      margin-top: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      font-size: 15px;
+      margin: 12px 0 8px;
+      color: #b7becb;
+      font-weight: 500;
+    }
+
+    .timer {
+      display: inline-block;
+      background: rgba(231, 188, 97, 0.1);
+      border: 1px solid rgba(231, 188, 97, 0.35);
+      color: #e7bc61;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 50px;
+      margin: 14px 0 10px;
+      box-shadow: 0 0 20px rgba(231, 188, 97, 0.12);
+    }
+
+    .timer span {
+      font-weight: 700;
+      font-size: 17px;
+      color: #fff0c2;
+    }
+
+    .profile {
+      margin: 20px 0 14px;
+      position: relative;
+    }
+
+    .profile img {
+      width: 155px;
+      height: 155px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #e7bc61;
+      box-shadow:
+        0 0 30px rgba(231, 188, 97, 0.3),
+        0 0 60px rgba(231, 188, 97, 0.1);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 40px rgba(231, 188, 97, 0.45),
+        0 0 80px rgba(231, 188, 97, 0.15);
+    }
+
+    h2 {
+      color: #fff8e8;
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .sub-text {
+      font-size: 14px;
+      color: #b7becb;
+      margin: 6px 0 10px;
+    }
+
+    .quote {
+      font-size: 14px;
+      color: #f0cd7e;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .view-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 34px;
+      background: linear-gradient(135deg, #f5d88e, #d9a441);
+      color: #151c29;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 25px rgba(217, 164, 65, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: glowPulse 2.8s infinite ease-in-out;
+    }
+
+    .view-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+
+    .view-btn:hover::before {
+      left: 100%;
+    }
+
+    .view-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(217, 164, 65, 0.45);
+    }
+
+    .view-btn:active {
+      transform: scale(0.97);
+    }
+
+    .view-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #151c29;
+      flex-shrink: 0;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #fff0c2;
+      outline-offset: 5px;
+    }
+
+    .footer {
+      font-size: 14px;
+      margin-top: 18px;
+      color: #a5adbc;
+      font-weight: 500;
+    }
+
+    .credit {
+      text-align: center;
+      font-size: 13px;
+      margin: 20px 0 10px;
+      color: #a5adbc;
+    }
+
+    .credit a {
+      color: #f0cd7e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .disclaimer {
+      background: rgba(17, 26, 42, 0.9);
+      color: #b7becb;
+      font-size: 12px;
+      text-align: center;
+      padding: 14px 16px 12px;
+      border-top: 1px solid #344052;
+      line-height: 1.55;
+      border-radius: 14px 14px 0 0;
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+      backdrop-filter: blur(8px);
+    }
+
+    .footer-links {
+      font-size: 13px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 0 18px;
+      background: rgba(17, 26, 42, 0.9);
+      border-radius: 0 0 14px 14px;
+      max-width: 480px;
+      margin: 0 auto 12px;
+      width: 100%;
+      border-top: none;
+    }
+
+    .footer-links a {
+      color: #f0cd7e;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #fff0c2;
+    }
+
+    .footer-links span {
+      color: #a5adbc;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        box-shadow: 0 8px 25px rgba(217, 164, 65, 0.3);
+      }
+      50% {
+        box-shadow: 0 8px 32px rgba(217, 164, 65, 0.5);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .view-btn,
+      .view-btn::before,
+      .profile img {
+        animation: none;
+        transition: none;
+      }
+
+      .view-btn:hover,
+      .view-btn:active,
+      .profile img:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>SURYA X TRADES</h1>
+
+    <p class="tagline">
+      Market Insights · Trading Mindset · Smart Learning
+    </p>
+
+    <div class="timer" id="redirectStatus">
+      Join the learning journey
+    </div>
+
+    <div class="profile">
+      <img
+        src="https://i.ibb.co/pjHp0Gmr/suuryaaa.jpg"
+        alt="SURYA X TRADES Logo"
+        width="155"
+        height="155"
+      />
+    </div>
+
+    <h2>10,751 Subscribers Joined</h2>
+
+    <p class="sub-text" lang="hi">
+      हर दिन सीखें, मार्केट को बेहतर समझें
+    </p>
+
+    <p class="quote" lang="hi">
+      “पहले सीखें, फिर सोच-समझकर कदम बढ़ाएं।”
+    </p>
+
+    <a
+      href="https://t.me/+04O4qbg6Hs02NDA1"
+      class="view-btn"
+      id="joinBtn"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.801-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.12.098.153.23.169.331.016.1.036.327.02.504z"/>
+      </svg>
+      JOIN CHANNEL
+    </a>
+
+    <p class="footer" lang="hi">
+      सीखें • समझें • अनुशासन के साथ आगे बढ़ें
+    </p>
+  </main>
+
+  <div class="credit">
+    Ads Managed by
+    <a href="https://telegram.me/+TRlJl628l-FkMWE9">
+      @Nexgroww_agency
+    </a>
+  </div>
+
+  <section class="disclaimer">
+    <strong>Disclaimer:</strong>
+    All trading and game-related activities involve risk.
+    Provides information for educational and entertainment purposes only.
+    No guaranteed profits. Trade responsibly.
+  </section>
+
+  <div class="footer-links">
+    <a href="https://t.me/+04O4qbg6Hs02NDA1">Privacy Policy</a>
+    <span>|</span>
+    <a href="https://t.me/+04O4qbg6Hs02NDA1">Contact Us</a>
+  </div>
+
+  <script>
+    // Auto-redirect chahiye toh false ko true kar dein.
+    const enableAutoRedirect = false;
+
+    if (enableAutoRedirect) {
+      const joinBtn = document.getElementById("joinBtn");
+      const status = document.getElementById("redirectStatus");
+      let countdown = 5;
+
+      if (joinBtn && status) {
+        const renderCountdown = () => {
+          status.innerHTML =
+            'Redirecting in <span>' + countdown + '</span> seconds...';
+        };
+
+        renderCountdown();
+
+        const timer = setInterval(() => {
+          countdown--;
+          renderCountdown();
+
+          if (countdown <= 0) {
+            clearInterval(timer);
+            window.location.href = joinBtn.href;
+          }
+        }, 1000);
+      }
+    }
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s) {
+      if(f.fbq)return;
+      n=f.fbq=function() {
+        n.callMethod
+          ? n.callMethod.apply(n,arguments)
+          : n.queue.push(arguments);
+      };
+      if(!f._fbq)f._fbq=n;
+      n.push=n;
+      n.loaded=!0;
+      n.version='2.0';
+      n.queue=[];
+      t=b.createElement(e);
+      t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s);
+    }(
+      window,
+      document,
+      'script',
+      'https://connect.facebook.net/en_US/fbevents.js'
+    );
+
+    fbq('init', '1405917321673450');
+    fbq('track', 'PageView');
+  </script>
+
+  <noscript>
+    <img
+      height="1"
+      width="1"
+      style="display:none"
+      alt=""
+      src="https://www.facebook.com/tr?id=852744864527545&amp;ev=PageView&amp;noscript=1"
+    />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</body>
+</html>
